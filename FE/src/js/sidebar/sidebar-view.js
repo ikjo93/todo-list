@@ -12,27 +12,15 @@ export default class View {
 
   checKInputCheckbox = () => {
     if (!this.$menuIcon.checked) {
-      clearInterval(this.timer);
       return;
     }
 
     this.getLogData();
   };
 
-  startSidebarTimer(userId, info) {
+  renderSidebar(userId, info) {
     const $sidebarContainer = $('.sidebar-container');
 
-    if (!this.timer) {
-      this.renderSidebar(info, userId, $sidebarContainer);
-    }
-
-    const ONE_MINUTE_MS = 60000;
-    this.timer = setInterval(() => {
-      this.renderSidebar(info, userId, $sidebarContainer);
-    }, ONE_MINUTE_MS);
-  }
-
-  renderSidebar(info, userId, $sidebarContainer) {
     const sidebarDataTemplate = info.reduce(
       (pre, curData) => (pre += this.sidebarActionLog(userId, curData)),
       ''

@@ -18,7 +18,7 @@ export default class Model {
   async addCardData(headerValue) {
     const newCardData = await fetchRequest('/works', 'POST', headerValue);
 
-    return newCardData;
+    return newCardData.json();
   }
 
   async updateCardData(updateInfo, workId) {
@@ -28,7 +28,7 @@ export default class Model {
       updateInfo
     );
 
-    return changedCardData;
+    return changedCardData.json();
   }
 
   removeCardData(removeCardInfo, workId) {

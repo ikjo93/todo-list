@@ -1,5 +1,5 @@
 export async function fetchRequest(url, type = 'GET', request) {
-  if(type === 'GET' || type === 'DELETE') {
+  if (type === 'GET' || type === 'DELETE') {
     return await requestReadOrDelete(url, type);
   }
   return await requestCreateOrUpdate(url, type, request);
@@ -20,7 +20,5 @@ async function requestCreateOrUpdate(url, type, request) {
     body: JSON.stringify(request),
   });
 
-  if ((type === 'PATCH' && url === '/works') || (type === 'POST' && url.length > 6)) return;
-
-  return res.json();
+  return res;
 }
