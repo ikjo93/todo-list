@@ -13,9 +13,8 @@ export default class Controller {
   }
 
   async getLogData() {
-    const sidebarData = await fetchRequest(
-      '/user-logs?userId=ikjo'
-    );
+    const sidebarData = await fetchRequest('/user-logs?userId=ikjo');
+
     const actionLogData = this.model.returnLogData(sidebarData);
     let userId = '';
 
@@ -23,7 +22,7 @@ export default class Controller {
       if (typeof logData === 'string') userId = logData;
 
       if (Array.isArray(logData)) {
-        this.view.renderSidebar(userId, logData);
+        this.view.startSidebarTimer(userId, logData);
       }
     }
   }

@@ -22,11 +22,20 @@ export default class Model {
   }
 
   async updateCardData(updateInfo, workId) {
-    const changedCardData = await fetchRequest(`/works/${workId}`, 'PATCH', updateInfo);
+    const changedCardData = await fetchRequest(
+      `/works/${workId}`,
+      'PATCH',
+      updateInfo
+    );
+
     return changedCardData;
   }
 
-  removeCardData(removeCardInfo,workId) {
-    fetchRequest(`/works/${workId}`,"POST",removeCardInfo);
+  removeCardData(removeCardInfo, workId) {
+    fetchRequest(`/works/${workId}`, 'POST', removeCardInfo);
+  }
+
+  dragCardData(dragInfo) {
+    fetchRequest(`/works`, 'PATCH', dragInfo);
   }
 }
